@@ -31,10 +31,10 @@ def add_card(data):
     data.append(card_data)
     save(data)
 
-def practice():
+def practice(data):
     for card in data:
 
-        print(card["question"])
+        print("") + print(card["question"])
         answer = input("Enter your answer: ")
 
         if answer == card["answer"]:
@@ -55,7 +55,7 @@ while True:
     if operation == 1:
         response = add_card(data)
     elif operation == 2:
-        practice()
+        practice(data)
     elif operation == 3:
         pass
     elif operation == 4:
