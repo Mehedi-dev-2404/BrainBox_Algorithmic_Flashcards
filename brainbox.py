@@ -34,10 +34,13 @@ def add_card(data):
 def practice(data):
     for card in data:
 
-        print("") + print(card["question"])
+        print("Question: ") + print(card["question"])
         answer = input("Enter your answer: ")
 
         if answer == card["answer"]:
+            if card["level"] != 3:
+                level = card["level"]  + 1
+                card["level"] = level
             print("Correct")
         else:
             print("Wrong")
@@ -61,4 +64,3 @@ while True:
     elif operation == 4:
         pass
         break
-
