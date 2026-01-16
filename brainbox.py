@@ -20,7 +20,6 @@ def save(data):
         json.dump(data, f)
 
 def add_card(data):
-    load_data = load()
     question = input("Question: ")
     answer = input("Answer: ")
     card_data = {
@@ -31,6 +30,17 @@ def add_card(data):
                  }
     data.append(card_data)
     save(data)
+
+def practice():
+    for card in data:
+
+        print(card["question"])
+        answer = input("Enter your answer: ")
+
+        if answer == card["answer"]:
+            print("Correct")
+        else:
+            print("Wrong")
 
 data = load()
 
@@ -45,11 +55,10 @@ while True:
     if operation == 1:
         response = add_card(data)
     elif operation == 2:
-        pass
+        practice()
     elif operation == 3:
         pass
     elif operation == 4:
         pass
         break
 
-print(data)
