@@ -40,6 +40,9 @@ def add_card(data, date_now):
 def practice(data, date_now, three_days, seven_days, str_date_now):
     cards_to_practice = filter_cards(data, date_now)
 
+    print("\n" + "-" * 40)
+    print("📖 New Card")
+
     if cards_to_practice:
 
         for card in cards_to_practice:
@@ -49,7 +52,7 @@ def practice(data, date_now, three_days, seven_days, str_date_now):
             if answer == card["answer"]:
                 if card["level"] != 3:
                     card["level"] += 1
-                print("Correct")
+                print("🎉 Nice! Card level increased.")
 
                 if card["level"] == 1  :
                     next_review = date_now
@@ -64,10 +67,13 @@ def practice(data, date_now, three_days, seven_days, str_date_now):
                 card["level"] = 1
                 card["next_review"] = str_date_now
                 print("Wrong")
+                print("🔁 No worries — card reset to Level 1.")
             save(data)
+            print("\n✅ Practice session complete.")
+        print(f"📅 Cards reviewed today: {len(cards_to_practice)}")
             
     else: 
-        print("No cards due for review! Go play outside.")
+        print("😌 You're all caught up for today!")
 
 
 def filter_cards(data, date_now):
@@ -100,20 +106,29 @@ def view_stats(data, str_date_now):
     count_3 = 0
     due_count = 0
 
-    print(f"Level 1 : {count_1}")
-    print(f"Level 2 : {count_2}")
-    print(f"Level 3 : {count_3}")
-    print(f"Due today: {due_count}")
+    print("\n📊 Your Progress")
+    print("-" * 20)
+    print(f"📦 Total cards: {len(data)}")
+    print(f"🟥 Level 1: {count_1}")
+    print(f"🟨 Level 2: {count_2}")
+    print(f"🟩 Level 3: {count_3}")
+    print(f"⏰ Due today: {due_count}")
 
 data = load()
 
 while True:
-    print("""
-1. Add Card
-2. Practice
-3. View Stats
-4. Exit""" )
+    print("\n" + "=" * 30)
+    print("🧠 BrainBox — Algorithmic Flashcards")
+    print("=" * 30)
+    print("1️⃣  Add a new card")
+    print("2️⃣  Practice due cards")
+    print("3️⃣  View stats")
+    print("4️⃣  Exit")
     operation = int(input("Enter which operation do you want to perform (1-4): "))
+
+    if operation not in {"1", "2", "3", "4"}:
+        print("❌ Invalid choice. Try again.")
+        continue
 
     if operation == 1:
         response = add_card(data, date_now)
