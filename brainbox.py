@@ -69,7 +69,8 @@ def practice(data, date_now, three_days, seven_days, str_date_now):
                 print("Wrong")
                 print("🔁 No worries — card reset to Level 1.")
             save(data)
-            print("\n✅ Practice session complete.")
+            
+        print("\n✅ Practice session complete.")
         print(f"📅 Cards reviewed today: {len(cards_to_practice)}")
             
     else: 
@@ -89,7 +90,10 @@ def filter_cards(data, date_now):
     return filtered_cards
 
 def view_stats(data, str_date_now):
-    print(f"Total cards: {len(data)}")
+    count_1 = 0
+    count_2 = 0
+    count_3 = 0
+    due_count = 0
     for card in data:
         if card['level'] == 1:
             count_1 += 1
@@ -100,11 +104,6 @@ def view_stats(data, str_date_now):
 
         if card["next_review"] == str_date_now:
             due_count += 1
-
-    count_1 = 0
-    count_2 = 0
-    count_3 = 0
-    due_count = 0
 
     print("\n📊 Your Progress")
     print("-" * 20)
@@ -124,17 +123,17 @@ while True:
     print("2️⃣  Practice due cards")
     print("3️⃣  View stats")
     print("4️⃣  Exit")
-    operation = int(input("Enter which operation do you want to perform (1-4): "))
+    operation = input("Choose an option (1–4): ").strip()
 
     if operation not in {"1", "2", "3", "4"}:
         print("❌ Invalid choice. Try again.")
         continue
 
-    if operation == 1:
+    if operation == "1":
         response = add_card(data, date_now)
-    elif operation == 2:
+    elif operation == "2":
         practice(data, date_now, three_days, seven_days, str_date_now)
-    elif operation == 3:
+    elif operation == "3":
         view_stats(data, str_date_now)
-    elif operation == 4:
+    elif operation == "4":
         break
