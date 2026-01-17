@@ -1,7 +1,12 @@
 import json
 import os
+from datetime import datetime, timedelta
 
 flash_file = 'flashcards.json'
+date_now = datetime.now().date()
+str_date_now = date_now.strftime("%Y/%m/%d")
+three_days = timedelta(days=3)
+seven_days = timedelta(days=7)
 
 try:
     with open(flash_file, 'r') as f:
@@ -19,20 +24,21 @@ def save(data):
     with open(flash_file, "w") as f:
         json.dump(data, f)
 
-def add_card(data):
+def add_card(data, date_now):
     question = input("Question: ")
     answer = input("Answer: ")
+
     card_data = {
         "question": question, 
                  "answer": answer, 
                  "level" : 1, 
-                 "next_review" : "today"
+                 "next_review" : str_date_now
                  }
     data.append(card_data)
     save(data)
 
-def practice(data):
-    cards_to_practice = filter_cards(data)
+def practice(data, date_now, three_days, seven_days, str_date_now):
+    cards_to_practice = filter_cards(data, date_now)
 
     if cards_to_practice:
 
@@ -44,24 +50,35 @@ def practice(data):
                 if card["level"] != 3:
                     card["level"] += 1
                 print("Correct")
+
+                if card["level"] == 1  :
+                    next_review = date_now
+                elif card["level"] == 2:
+                    next_review = date_now + three_days
+                elif card["level"] == 3:
+                    next_review = date_now + seven_days
+                
+                next_review = next_review.strftime("%Y/%m/%d")
+                card["next_review"] = next_review
             else:
                 card["level"] = 1
+                card["next_review"] = str_date_now
                 print("Wrong")
             save(data)
             
     else: 
-        print("The card list is empty")
+        print("No cards due for review! Go play outside.")
 
 
-def filter_cards(data):
+def filter_cards(data, date_now):
 
     filtered_cards = list()
 
     for card in data:
+        card_date = datetime.strptime(card["next_review"], "%Y/%m/%d").date()
         if card['level'] in [1, 2, 3]:
-            filtered_cards.append(card)
-        else:
-            print("Level not accepted")
+            if card_date <= date_now:
+                filtered_cards.append(card)
 
     return filtered_cards
 
@@ -76,9 +93,9 @@ while True:
     operation = int(input("Enter which operation do you want to perform (1-4): "))
 
     if operation == 1:
-        response = add_card(data)
+        response = add_card(data, date_now)
     elif operation == 2:
-        practice(data)
+        practice(data, date_now, three_days, seven_days, str_date_now)
     elif operation == 3:
         pass
     elif operation == 4:
