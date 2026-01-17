@@ -74,6 +74,6 @@ Each flashcard contains:
   "next_review": "2026/01/20"
 }
 
-![main_menu](main_menu.png)
-![Practice Session](practice_session.png)
-![Stats](stats.png)
+![main_menu](screenshots/main_menu.png)
+![Practice Session](screenshots/practice_session.png)
+![Stats](screenshots/stats.png)
