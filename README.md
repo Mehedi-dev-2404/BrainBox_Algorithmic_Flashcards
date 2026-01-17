@@ -65,15 +65,16 @@ Each flashcard contains:
 ---
 
 ## Example Flashcard Format
-
-```json
 {
   "question": "What does datetime.now().date() return?",
   "answer": "Today's date",
   "level": 2,
   "next_review": "2026/01/20"
 }
+## Main Menu
+<img width="306" height="159" alt="Screenshot 2026-01-17 at 6 02 56 PM" src="https://github.com/user-attachments/assets/ca3877f4-7507-4167-812f-f7d8e60418d4" />
+## Practice
+<img width="375" height="122" alt="Screenshot 2026-01-17 at 6 04 34 PM" src="https://github.com/user-attachments/assets/419f01a2-37b9-488e-84f7-4b6c70abc1bc" />
+## Stats
+<img width="170" height="126" alt="Screenshot 2026-01-17 at 6 06 17 PM" src="https://github.com/user-attachments/assets/27bfbf10-7372-431a-8749-ce4156ddd173" />
 
-![main_menu](screenshots/main_menu.png)
-![Practice Session](screenshots/practice_session.png)
-![Stats](screenshots/stats.png)
