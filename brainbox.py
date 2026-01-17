@@ -82,6 +82,29 @@ def filter_cards(data, date_now):
 
     return filtered_cards
 
+def view_stats(data, str_date_now):
+    print(f"Total cards: {len(data)}")
+    for card in data:
+        if card['level'] == 1:
+            count_1 += 1
+        elif card['level'] == 2:
+            count_2 += 1
+        elif card['level'] == 3:
+            count_3 += 1
+
+        if card["next_review"] == str_date_now:
+            due_count += 1
+
+    count_1 = 0
+    count_2 = 0
+    count_3 = 0
+    due_count = 0
+
+    print(f"Level 1 : {count_1}")
+    print(f"Level 2 : {count_2}")
+    print(f"Level 3 : {count_3}")
+    print(f"Due today: {due_count}")
+
 data = load()
 
 while True:
@@ -97,7 +120,6 @@ while True:
     elif operation == 2:
         practice(data, date_now, three_days, seven_days, str_date_now)
     elif operation == 3:
-        pass
+        view_stats(data, str_date_now)
     elif operation == 4:
-        pass
         break
