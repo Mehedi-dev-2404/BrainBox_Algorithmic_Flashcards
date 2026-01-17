@@ -73,3 +73,7 @@ Each flashcard contains:
   "level": 2,
   "next_review": "2026/01/20"
 }
+
+![main_menu](main_menu.png)
+![Practice Session](practice_session.png)
+![Stats](stats.png)
