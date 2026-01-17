@@ -65,6 +65,7 @@ Each flashcard contains:
 ---
 
 ## Example Flashcard Format
+
 {
   "question": "What does datetime.now().date() return?",
   "answer": "Today's date",
@@ -72,6 +73,7 @@ Each flashcard contains:
   "next_review": "2026/01/20"
 }
 
+---
 ## Main Menu
 <img width="306" height="159" alt="Screenshot 2026-01-17 at 6 02 56 PM" src="https://github.com/user-attachments/assets/ca3877f4-7507-4167-812f-f7d8e60418d4" />
 
