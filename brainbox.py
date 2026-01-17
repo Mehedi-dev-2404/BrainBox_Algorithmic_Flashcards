@@ -32,19 +32,38 @@ def add_card(data):
     save(data)
 
 def practice(data):
+    cards_to_practice = filter_cards(data)
+
+    if cards_to_practice:
+
+        for card in cards_to_practice:
+            print(f"Question: {card['question']}")
+            answer = input("Enter your answer: ")
+
+            if answer == card["answer"]:
+                if card["level"] != 3:
+                    card["level"] += 1
+                print("Correct")
+            else:
+                card["level"] = 1
+                print("Wrong")
+            save(data)
+            
+    else: 
+        print("The card list is empty")
+
+
+def filter_cards(data):
+
+    filtered_cards = list()
+
     for card in data:
-
-        print(f"Question: {card['question']}")
-        answer = input("Enter your answer: ")
-
-        if answer == card["answer"]:
-            if card["level"] != 3:
-                card["level"] += 1
-            print("Correct")
+        if card['level'] in [1, 2, 3]:
+            filtered_cards.append(card)
         else:
-            card["level"] = 1
-            print("Wrong")
-        save(data)
+            print("Level not accepted")
+
+    return filtered_cards
 
 data = load()
 
