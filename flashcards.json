@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "question": "What does a variable do in Python?",
+    "answer": "Stores a value",
+    "level": 1,
+    "next_review": "2026/01/17"
+  },
+  {
+    "question": "What data type is returned by input()?",
+    "answer": "string",
+    "level": 2,
+    "next_review": "2026/01/20"
+  },
+  {
+    "question": "What keyword is used to define a function in Python?",
+    "answer": "def",
+    "level": 3,
+    "next_review": "2026/01/24"
+  },
+  {
+    "question": "What does JSON stand for?",
+    "answer": "JavaScript Object Notation",
+    "level": 1,
+    "next_review": "2026/01/17"
+  },
+  {
+    "question": "What does datetime.now().date() return?",
+    "answer": "Today's date",
+    "level": 2,
+    "next_review": "2026/01/20"
+  }
+]
