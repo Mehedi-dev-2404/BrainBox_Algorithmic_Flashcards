@@ -57,6 +57,7 @@ Each flashcard contains:
 ---
 
 ## Project Structure
+│
 ├── brainbox.py
 ├── flashcards.json
 └── README.md
